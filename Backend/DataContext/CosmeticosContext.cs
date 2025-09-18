@@ -43,31 +43,50 @@ namespace Backend.DataContext
                 new Venta
                 {
                     Id = 1,
-                    Fecha = DateTime.Now.AddDays(-2),
-                    PrecioTotal = 689.97m,
+                    Fecha = DateTime.Now,
+                    PrecioTotal = 739.96m,
                     Estado = "pagada",
-                    ClienteId = 3,  
+                    ClienteId = 3,
                     VendedorId = 2,
 
                 },
                 new Venta
                 {
                     Id = 2,
-                    Fecha = DateTime.Now.AddDays(-1),
-                    PrecioTotal = 49.99m,
+                    Fecha = DateTime.Now,
+                    PrecioTotal = 159.98m,
                     Estado = "pendiente",
-                    ClienteId = 3,  
+                    ClienteId = 3,
                     VendedorId = 2,
                 },
                 new Venta
                 {
                     Id = 3,
                     Fecha = DateTime.Now,
-                    PrecioTotal = 0m,
-                    Estado = "pendiente",
-                    ClienteId = 3,  
+                    PrecioTotal = 39.99m,
+                    Estado = "enviada",
+                    ClienteId = 3,
                     VendedorId = 2,
-                });
+                },
+                new Venta
+                {
+                    Id = 4,
+                    Fecha = DateTime.Now,
+                    PrecioTotal = 89.99m,
+                    Estado = "cancelada",
+                    ClienteId = 3,
+                    VendedorId = 2,
+                },
+                new Venta
+                {
+                    Id = 5,
+                    Fecha = DateTime.Now,
+                    PrecioTotal = 49.99m,
+                    Estado = "pagada",
+                    ClienteId = 3,
+                    VendedorId = 2,
+                }
+                );
 
             modelBuilder.Entity<Producto>().HasData(
                 new Producto
@@ -139,7 +158,16 @@ namespace Backend.DataContext
                     Cantidad = 1,
                     PrecioUnitario = 89.99m,
                 
-                });
+                },
+                new VentaDetalle
+                {
+                    Id = 4,
+                    VentaId = 2,
+                    ProductoId = 4,
+                    Cantidad = 2,
+                    PrecioUnitario = 59.99m,
+                }
+                );
 
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario
@@ -166,6 +194,14 @@ namespace Backend.DataContext
                       Correo = "estrellademar@gmail.com",
                       Password= "patry123",
                       Rol = RolEnum.Cliente,
+                  },
+                  new Usuario
+                  {
+                      Id = 4,
+                      Nombre = "Ana",
+                      Correo = "annita@gmail.com",
+                      Password = "anne1223",
+                      Rol = RolEnum.Proveedor,
                   }
                   );
 

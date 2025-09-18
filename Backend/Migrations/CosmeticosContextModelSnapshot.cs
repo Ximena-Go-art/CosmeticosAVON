@@ -40,10 +40,6 @@ namespace Backend.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -65,7 +61,6 @@ namespace Backend.Migrations
                             Categoria = 0,
                             Descripcion = "Un aroma fresco y duradero.",
                             IsDeleted = false,
-                            Marca = "",
                             Nombre = "Perfume Avon",
                             Precio = 299.99m,
                             Stock = 50
@@ -76,7 +71,6 @@ namespace Backend.Migrations
                             Categoria = 1,
                             Descripcion = "Color intenso y humectante.",
                             IsDeleted = false,
-                            Marca = "",
                             Nombre = "Labial Avon",
                             Precio = 49.99m,
                             Stock = 100
@@ -87,7 +81,6 @@ namespace Backend.Migrations
                             Categoria = 4,
                             Descripcion = "Hidratación profunda para todo el día.",
                             IsDeleted = false,
-                            Marca = "",
                             Nombre = "Crema Hidratante Avon",
                             Precio = 89.99m,
                             Stock = 75
@@ -98,7 +91,6 @@ namespace Backend.Migrations
                             Categoria = 2,
                             Descripcion = "Colores vibrantes y duraderos.",
                             IsDeleted = false,
-                            Marca = "",
                             Nombre = "Sombra de Ojos Avon",
                             Precio = 59.99m,
                             Stock = 80
@@ -109,7 +101,6 @@ namespace Backend.Migrations
                             Categoria = 3,
                             Descripcion = "Acabado brillante y secado rápido.",
                             IsDeleted = false,
-                            Marca = "",
                             Nombre = "Esmalte de Uñas Avon",
                             Precio = 39.99m,
                             Stock = 120
@@ -173,6 +164,15 @@ namespace Backend.Migrations
                             Nombre = "Patricio",
                             Password = "patry123",
                             Rol = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Correo = "annita@gmail.com",
+                            IsDeleted = false,
+                            Nombre = "Ana",
+                            Password = "anne1223",
+                            Rol = 3
                         });
                 });
 
@@ -184,7 +184,7 @@ namespace Backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClienteId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("Estado")
@@ -200,14 +200,10 @@ namespace Backend.Migrations
                     b.Property<decimal>("PrecioTotal")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int?>("VendedorId")
+                    b.Property<int>("VendedorId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("VendedorId");
 
                     b.ToTable("Ventas");
 
@@ -217,9 +213,9 @@ namespace Backend.Migrations
                             Id = 1,
                             ClienteId = 3,
                             Estado = "pagada",
-                            Fecha = new DateTime(2025, 9, 7, 16, 0, 38, 30, DateTimeKind.Local).AddTicks(8030),
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9198),
                             IsDeleted = false,
-                            PrecioTotal = 689.97m,
+                            PrecioTotal = 739.96m,
                             VendedorId = 2
                         },
                         new
@@ -227,19 +223,39 @@ namespace Backend.Migrations
                             Id = 2,
                             ClienteId = 3,
                             Estado = "pendiente",
-                            Fecha = new DateTime(2025, 9, 8, 16, 0, 38, 30, DateTimeKind.Local).AddTicks(8047),
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9208),
                             IsDeleted = false,
-                            PrecioTotal = 49.99m,
+                            PrecioTotal = 159.98m,
                             VendedorId = 2
                         },
                         new
                         {
                             Id = 3,
                             ClienteId = 3,
-                            Estado = "pendiente",
-                            Fecha = new DateTime(2025, 9, 9, 16, 0, 38, 30, DateTimeKind.Local).AddTicks(8055),
+                            Estado = "enviada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9211),
                             IsDeleted = false,
-                            PrecioTotal = 0m,
+                            PrecioTotal = 39.99m,
+                            VendedorId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClienteId = 3,
+                            Estado = "cancelada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9217),
+                            IsDeleted = false,
+                            PrecioTotal = 89.99m,
+                            VendedorId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClienteId = 3,
+                            Estado = "pagada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9219),
+                            IsDeleted = false,
+                            PrecioTotal = 49.99m,
                             VendedorId = 2
                         });
                 });
@@ -298,22 +314,16 @@ namespace Backend.Migrations
                             PrecioUnitario = 89.99m,
                             ProductoId = 3,
                             VentaId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cantidad = 2,
+                            IsDeleted = false,
+                            PrecioUnitario = 59.99m,
+                            ProductoId = 4,
+                            VentaId = 2
                         });
-                });
-
-            modelBuilder.Entity("Service.Models.Venta", b =>
-                {
-                    b.HasOne("Service.Models.Usuario", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("Service.Models.Usuario", "Vendedor")
-                        .WithMany()
-                        .HasForeignKey("VendedorId");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Vendedor");
                 });
 #pragma warning restore 612, 618
         }

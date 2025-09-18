@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class inici : Migration
+    public partial class DataInicio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -83,27 +83,17 @@ namespace Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ClienteId = table.Column<int>(type: "int", nullable: true),
-                    VendedorId = table.Column<int>(type: "int", nullable: true),
                     Fecha = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     PrecioTotal = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Estado = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    VendedorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ventas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ventas_Usuarios_ClienteId",
-                        column: x => x.ClienteId,
-                        principalTable: "Usuarios",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Ventas_Usuarios_VendedorId",
-                        column: x => x.VendedorId,
-                        principalTable: "Usuarios",
-                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -126,7 +116,8 @@ namespace Backend.Migrations
                 {
                     { 1, "juancho@gmail.com", false, "Juan", "juan123", 1 },
                     { 2, "mariana@gmail.com", false, "Maria", "maria123", 2 },
-                    { 3, "estrellademar@gmail.com", false, "Patricio", "patry123", 4 }
+                    { 3, "estrellademar@gmail.com", false, "Patricio", "patry123", 4 },
+                    { 4, "annita@gmail.com", false, "Ana", "anne1223", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -136,7 +127,8 @@ namespace Backend.Migrations
                 {
                     { 1, 2, false, 299.99m, 1, 1 },
                     { 2, 1, false, 49.99m, 2, 1 },
-                    { 3, 1, false, 89.99m, 3, 1 }
+                    { 3, 1, false, 89.99m, 3, 1 },
+                    { 4, 2, false, 59.99m, 4, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -144,20 +136,12 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "ClienteId", "Estado", "Fecha", "IsDeleted", "PrecioTotal", "VendedorId" },
                 values: new object[,]
                 {
-                    { 1, 3, "pagada", new DateTime(2025, 9, 7, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3424), false, 689.97m, 2 },
-                    { 2, 3, "pendiente", new DateTime(2025, 9, 8, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3442), false, 49.99m, 2 },
-                    { 3, 3, "pendiente", new DateTime(2025, 9, 9, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3445), false, 0m, 2 }
+                    { 1, 3, "pagada", new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9198), false, 739.96m, 2 },
+                    { 2, 3, "pendiente", new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9208), false, 159.98m, 2 },
+                    { 3, 3, "enviada", new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9211), false, 39.99m, 2 },
+                    { 4, 3, "cancelada", new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9217), false, 89.99m, 2 },
+                    { 5, 3, "pagada", new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9219), false, 49.99m, 2 }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ventas_ClienteId",
-                table: "Ventas",
-                column: "ClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ventas_VendedorId",
-                table: "Ventas",
-                column: "VendedorId");
         }
 
         /// <inheritdoc />
@@ -167,13 +151,13 @@ namespace Backend.Migrations
                 name: "Productos");
 
             migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "VentaDetalles");
 
             migrationBuilder.DropTable(
                 name: "Ventas");
-
-            migrationBuilder.DropTable(
-                name: "Usuarios");
         }
     }
 }

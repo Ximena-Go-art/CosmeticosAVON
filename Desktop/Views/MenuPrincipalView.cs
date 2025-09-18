@@ -1,0 +1,16 @@
+namespace Desktop
+{
+    public partial class MenuPrincipalView : Form
+    {
+        public MenuPrincipalView()
+        {
+            InitializeComponent();
+        }
+
+        private void SubMenuSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+    }
+}

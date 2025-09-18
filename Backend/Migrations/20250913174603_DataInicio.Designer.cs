@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(CosmeticosContext))]
-    [Migration("20250909185625_inici")]
-    partial class inici
+    [Migration("20250913174603_DataInicio")]
+    partial class DataInicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -167,6 +167,15 @@ namespace Backend.Migrations
                             Nombre = "Patricio",
                             Password = "patry123",
                             Rol = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Correo = "annita@gmail.com",
+                            IsDeleted = false,
+                            Nombre = "Ana",
+                            Password = "anne1223",
+                            Rol = 3
                         });
                 });
 
@@ -178,7 +187,7 @@ namespace Backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClienteId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("Estado")
@@ -194,14 +203,10 @@ namespace Backend.Migrations
                     b.Property<decimal>("PrecioTotal")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int?>("VendedorId")
+                    b.Property<int>("VendedorId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("VendedorId");
 
                     b.ToTable("Ventas");
 
@@ -211,9 +216,9 @@ namespace Backend.Migrations
                             Id = 1,
                             ClienteId = 3,
                             Estado = "pagada",
-                            Fecha = new DateTime(2025, 9, 7, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3424),
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9198),
                             IsDeleted = false,
-                            PrecioTotal = 689.97m,
+                            PrecioTotal = 739.96m,
                             VendedorId = 2
                         },
                         new
@@ -221,19 +226,39 @@ namespace Backend.Migrations
                             Id = 2,
                             ClienteId = 3,
                             Estado = "pendiente",
-                            Fecha = new DateTime(2025, 9, 8, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3442),
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9208),
                             IsDeleted = false,
-                            PrecioTotal = 49.99m,
+                            PrecioTotal = 159.98m,
                             VendedorId = 2
                         },
                         new
                         {
                             Id = 3,
                             ClienteId = 3,
-                            Estado = "pendiente",
-                            Fecha = new DateTime(2025, 9, 9, 15, 56, 22, 655, DateTimeKind.Local).AddTicks(3445),
+                            Estado = "enviada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9211),
                             IsDeleted = false,
-                            PrecioTotal = 0m,
+                            PrecioTotal = 39.99m,
+                            VendedorId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClienteId = 3,
+                            Estado = "cancelada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9217),
+                            IsDeleted = false,
+                            PrecioTotal = 89.99m,
+                            VendedorId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClienteId = 3,
+                            Estado = "pagada",
+                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9219),
+                            IsDeleted = false,
+                            PrecioTotal = 49.99m,
                             VendedorId = 2
                         });
                 });
@@ -292,22 +317,16 @@ namespace Backend.Migrations
                             PrecioUnitario = 89.99m,
                             ProductoId = 3,
                             VentaId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cantidad = 2,
+                            IsDeleted = false,
+                            PrecioUnitario = 59.99m,
+                            ProductoId = 4,
+                            VentaId = 2
                         });
-                });
-
-            modelBuilder.Entity("Service.Models.Venta", b =>
-                {
-                    b.HasOne("Service.Models.Usuario", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("Service.Models.Usuario", "Vendedor")
-                        .WithMany()
-                        .HasForeignKey("VendedorId");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Vendedor");
                 });
 #pragma warning restore 612, 618
         }
