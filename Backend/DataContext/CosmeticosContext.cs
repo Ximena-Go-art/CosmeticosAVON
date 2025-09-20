@@ -94,18 +94,32 @@ namespace Backend.DataContext
                 new VentaDetalle { Id = 5, VentaId = 3, ProductoNombre = "Esmalte", Cantidad = 2, PrecioUnitario = 22000, IsDeleted = false }
                 );
             modelBuilder.Entity<Menu>().HasData(
+                // Definición de menús 
                 new Menu { Id = 1, Nombre = "Gestión de Ventas", Descripcion = "Acceso al módulo de ventas", IsDeleted = false },
                 new Menu { Id = 2, Nombre = "Gestión de Productos", Descripcion = "Acceso al módulo de productos", IsDeleted = false },
                 new Menu { Id = 3, Nombre = "Reportes", Descripcion = "Acceso a reportes del sistema", IsDeleted = false },
-                new Menu { Id = 4, Nombre = "Mis Compras", Descripcion = "Historial de compras del cliente", IsDeleted = false }
+                new Menu { Id = 4, Nombre = "Historial", Descripcion = "Historial de compras del cliente", IsDeleted = false },
+                new Menu { Id = 5, Nombre = "Usuarios", Descripcion = "Gestión de usuarios del sistema", IsDeleted = false },
+                new Menu { Id = 6, Nombre = "Detalles de Venta", Descripcion = "Detalles de las ventas", IsDeleted = false }
+
                 );
             modelBuilder.Entity<MenuRol>().HasData(
+            // Administrador → acceso a todo
                 new MenuRol { Id = 1, MenuId = 1, Rol = RolEnum.Administrador, IsDeleted = false },
-                new MenuRol { Id = 2, MenuId = 1, Rol = RolEnum.Vendedor, IsDeleted = false },
-                new MenuRol { Id = 3, MenuId = 2, Rol = RolEnum.Administrador, IsDeleted = false },
-                new MenuRol { Id = 4, MenuId = 2, Rol = RolEnum.Vendedor, IsDeleted = false },
-                new MenuRol { Id = 5, MenuId = 3, Rol = RolEnum.Administrador, IsDeleted = false },
-                new MenuRol { Id = 6, MenuId = 4, Rol = RolEnum.Cliente, IsDeleted = false }
+                new MenuRol { Id = 2, MenuId = 2, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 3, MenuId = 3, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 4, MenuId = 4, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 11, MenuId = 5, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 12, MenuId = 6, Rol = RolEnum.Administrador, IsDeleted = false },
+
+                // Vendedor → Productos, Ventas, Detalles de Venta
+                new MenuRol { Id = 5, MenuId = 1, Rol = RolEnum.Vendedor, IsDeleted = false },
+                new MenuRol { Id = 6, MenuId = 2, Rol = RolEnum.Vendedor, IsDeleted = false },
+                new MenuRol { Id = 13, MenuId = 6, Rol = RolEnum.Vendedor, IsDeleted = false },
+
+                 // Cliente → Productos, Ventas y Mis Compras
+                 new MenuRol { Id = 9, MenuId = 2, Rol = RolEnum.Cliente, IsDeleted = false },
+                 new MenuRol { Id = 10, MenuId = 4, Rol = RolEnum.Cliente, IsDeleted = false }
                 );
 
 
