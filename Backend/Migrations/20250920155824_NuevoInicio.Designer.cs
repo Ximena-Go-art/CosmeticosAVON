@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(CosmeticosContext))]
-    [Migration("20250913174603_DataInicio")]
-    partial class DataInicio
+    [Migration("20250920155824_NuevoInicio")]
+    partial class NuevoInicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,54 @@ namespace Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("Service.Models.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menu");
+                });
+
+            modelBuilder.Entity("Service.Models.MenuRol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.Property<int>("menuId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("menuId");
+
+                    b.ToTable("MenuRol");
+                });
 
             modelBuilder.Entity("Service.Models.Producto", b =>
                 {
@@ -61,52 +109,52 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Categoria = 0,
-                            Descripcion = "Un aroma fresco y duradero.",
+                            Categoria = 4,
+                            Descripcion = "Crema para hidratar la piel",
                             IsDeleted = false,
-                            Nombre = "Perfume Avon",
-                            Precio = 299.99m,
-                            Stock = 50
+                            Nombre = "Crema Hidratante",
+                            Precio = 32000m,
+                            Stock = 100
                         },
                         new
                         {
                             Id = 2,
                             Categoria = 1,
-                            Descripcion = "Color intenso y humectante.",
+                            Descripcion = "Efecto mate",
                             IsDeleted = false,
-                            Nombre = "Labial Avon",
-                            Precio = 49.99m,
-                            Stock = 100
+                            Nombre = "Labial liquido",
+                            Precio = 12000m,
+                            Stock = 150
                         },
                         new
                         {
                             Id = 3,
-                            Categoria = 4,
-                            Descripcion = "Hidratación profunda para todo el día.",
+                            Categoria = 2,
+                            Descripcion = "Estilo highlight",
                             IsDeleted = false,
-                            Nombre = "Crema Hidratante Avon",
-                            Precio = 89.99m,
-                            Stock = 75
+                            Nombre = "Sombras",
+                            Precio = 18.00m,
+                            Stock = 120
                         },
                         new
                         {
                             Id = 4,
-                            Categoria = 2,
-                            Descripcion = "Colores vibrantes y duraderos.",
+                            Categoria = 3,
+                            Descripcion = "Efecto cracheado",
                             IsDeleted = false,
-                            Nombre = "Sombra de Ojos Avon",
-                            Precio = 59.99m,
+                            Nombre = "Esmalte de uñas",
+                            Precio = 30.00m,
                             Stock = 80
                         },
                         new
                         {
                             Id = 5,
-                            Categoria = 3,
-                            Descripcion = "Acabado brillante y secado rápido.",
+                            Categoria = 0,
+                            Descripcion = "De estilo floral",
                             IsDeleted = false,
-                            Nombre = "Esmalte de Uñas Avon",
-                            Precio = 39.99m,
-                            Stock = 120
+                            Nombre = "Perfume",
+                            Precio = 22.00m,
+                            Stock = 90
                         });
                 });
 
@@ -118,7 +166,7 @@ namespace Backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Correo")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -144,16 +192,34 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Correo = "juancho@gmail.com",
+                            Email = "amada@gmail.com",
                             IsDeleted = false,
-                            Nombre = "Juan",
-                            Password = "juan123",
+                            Nombre = "Amanda",
+                            Password = "amanda123",
                             Rol = 1
                         },
                         new
                         {
+                            Id = 6,
+                            Email = "juana@gmail.com",
+                            IsDeleted = false,
+                            Nombre = "Juana",
+                            Password = "juana123",
+                            Rol = 2
+                        },
+                        new
+                        {
                             Id = 2,
-                            Correo = "mariana@gmail.com",
+                            Email = "pedro@gmail.com",
+                            IsDeleted = false,
+                            Nombre = "Pedro",
+                            Password = "pedro123",
+                            Rol = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "maria@gmail.com",
                             IsDeleted = false,
                             Nombre = "Maria",
                             Password = "maria123",
@@ -161,21 +227,21 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 3,
-                            Correo = "estrellademar@gmail.com",
+                            Id = 4,
+                            Email = "luisa@gmail.com",
                             IsDeleted = false,
-                            Nombre = "Patricio",
-                            Password = "patry123",
+                            Nombre = "Luisa",
+                            Password = "luisa123",
                             Rol = 4
                         },
                         new
                         {
-                            Id = 4,
-                            Correo = "annita@gmail.com",
+                            Id = 5,
+                            Email = "carlos@gmail.com",
                             IsDeleted = false,
-                            Nombre = "Ana",
-                            Password = "anne1223",
-                            Rol = 3
+                            Nombre = "Carlos",
+                            Password = "carlos123",
+                            Rol = 4
                         });
                 });
 
@@ -187,12 +253,8 @@ namespace Backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int>("Estado")
                         .HasColumnType("int");
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime(6)");
@@ -200,11 +262,12 @@ namespace Backend.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<decimal>("PrecioTotal")
                         .HasColumnType("decimal(65,30)");
-
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -214,52 +277,47 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            ClienteId = 3,
-                            Estado = "pagada",
-                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9198),
+                            Estado = 2,
+                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7227),
                             IsDeleted = false,
-                            PrecioTotal = 739.96m,
-                            VendedorId = 2
+                            Nombre = "",
+                            PrecioTotal = 150.00m
                         },
                         new
                         {
                             Id = 2,
-                            ClienteId = 3,
-                            Estado = "pendiente",
-                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9208),
+                            Estado = 1,
+                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7238),
                             IsDeleted = false,
-                            PrecioTotal = 159.98m,
-                            VendedorId = 2
+                            Nombre = "",
+                            PrecioTotal = 200.00m
                         },
                         new
                         {
                             Id = 3,
-                            ClienteId = 3,
-                            Estado = "enviada",
-                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9211),
+                            Estado = 3,
+                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7241),
                             IsDeleted = false,
-                            PrecioTotal = 39.99m,
-                            VendedorId = 2
+                            Nombre = "",
+                            PrecioTotal = 300.00m
                         },
                         new
                         {
                             Id = 4,
-                            ClienteId = 3,
-                            Estado = "cancelada",
-                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9217),
+                            Estado = 2,
+                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7244),
                             IsDeleted = false,
-                            PrecioTotal = 89.99m,
-                            VendedorId = 2
+                            Nombre = "",
+                            PrecioTotal = 400.00m
                         },
                         new
                         {
                             Id = 5,
-                            ClienteId = 3,
-                            Estado = "pagada",
-                            Fecha = new DateTime(2025, 9, 13, 14, 46, 1, 328, DateTimeKind.Local).AddTicks(9219),
+                            Estado = 1,
+                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7247),
                             IsDeleted = false,
-                            PrecioTotal = 49.99m,
-                            VendedorId = 2
+                            Nombre = "",
+                            PrecioTotal = 500.00m
                         });
                 });
 
@@ -280,8 +338,9 @@ namespace Backend.Migrations
                     b.Property<decimal>("PrecioUnitario")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductoNombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("int");
@@ -296,8 +355,8 @@ namespace Backend.Migrations
                             Id = 1,
                             Cantidad = 2,
                             IsDeleted = false,
-                            PrecioUnitario = 299.99m,
-                            ProductoId = 1,
+                            PrecioUnitario = 32000m,
+                            ProductoNombre = "Prefume",
                             VentaId = 1
                         },
                         new
@@ -305,28 +364,48 @@ namespace Backend.Migrations
                             Id = 2,
                             Cantidad = 1,
                             IsDeleted = false,
-                            PrecioUnitario = 49.99m,
-                            ProductoId = 2,
+                            PrecioUnitario = 12000m,
+                            ProductoNombre = "Crema",
                             VentaId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Cantidad = 1,
+                            Cantidad = 3,
                             IsDeleted = false,
-                            PrecioUnitario = 89.99m,
-                            ProductoId = 3,
-                            VentaId = 1
+                            PrecioUnitario = 18000m,
+                            ProductoNombre = "Labial",
+                            VentaId = 2
                         },
                         new
                         {
                             Id = 4,
+                            Cantidad = 1,
+                            IsDeleted = false,
+                            PrecioUnitario = 30000m,
+                            ProductoNombre = "Sombras",
+                            VentaId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
                             Cantidad = 2,
                             IsDeleted = false,
-                            PrecioUnitario = 59.99m,
-                            ProductoId = 4,
-                            VentaId = 2
+                            PrecioUnitario = 22000m,
+                            ProductoNombre = "Esmalte",
+                            VentaId = 3
                         });
+                });
+
+            modelBuilder.Entity("Service.Models.MenuRol", b =>
+                {
+                    b.HasOne("Service.Models.Menu", "menu")
+                        .WithMany()
+                        .HasForeignKey("menuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("menu");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,15 +11,16 @@ namespace Service.Models
     {
         public int Id { get; set; }
         public int VentaId { get; set; }
-        public int ProductoId  { get; set; }
+        public string ProductoNombre { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioUnitario { get; set; }
+        public decimal PrecioTotal => Cantidad * PrecioUnitario;
         public bool IsDeleted { get; set; } = false;
 
 
         public override string ToString()
         {
-            return $"Se vendio: {ProductoId}, Cant: {Cantidad}, Precio: {PrecioUnitario:C}";
+            return $"Se vendio: {ProductoNombre}, Cant: {Cantidad}, Precio: {PrecioUnitario:C}";
         }
     }
 }

@@ -12,6 +12,9 @@ namespace Backend.DataContext
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<VentaDetalle> VentaDetalles { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuRol> MenuRoles { get; set; }
+
         public CosmeticosContext()
         {
             //constructor sin parametros
@@ -39,171 +42,71 @@ namespace Backend.DataContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Venta>().HasData(
-                new Venta
-                {
-                    Id = 1,
-                    Fecha = DateTime.Now,
-                    PrecioTotal = 739.96m,
-                    Estado = "pagada",
-                    ClienteId = 3,
-                    VendedorId = 2,
-
-                },
-                new Venta
-                {
-                    Id = 2,
-                    Fecha = DateTime.Now,
-                    PrecioTotal = 159.98m,
-                    Estado = "pendiente",
-                    ClienteId = 3,
-                    VendedorId = 2,
-                },
-                new Venta
-                {
-                    Id = 3,
-                    Fecha = DateTime.Now,
-                    PrecioTotal = 39.99m,
-                    Estado = "enviada",
-                    ClienteId = 3,
-                    VendedorId = 2,
-                },
+              new Venta { Id = 1, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 150.00m, Estado = EstadoEnum.Pagado, IsDeleted = false },
+                new Venta { Id = 2, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 200.00m, Estado = EstadoEnum.Pendiente, IsDeleted = false },
+                new Venta { Id = 3, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 300.00m, Estado = EstadoEnum.Cancelada, IsDeleted = false },
                 new Venta
                 {
                     Id = 4,
+                    Nombre = "",
                     Fecha = DateTime.Now,
-                    PrecioTotal = 89.99m,
-                    Estado = "cancelada",
-                    ClienteId = 3,
-                    VendedorId = 2,
+                    PrecioTotal = 400.00m,
+                    Estado = EstadoEnum.Pagado
+                ,
+                    IsDeleted = false
                 },
-                new Venta
-                {
-                    Id = 5,
-                    Fecha = DateTime.Now,
-                    PrecioTotal = 49.99m,
-                    Estado = "pagada",
-                    ClienteId = 3,
-                    VendedorId = 2,
-                }
+                new Venta { Id = 5, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 500.00m, Estado = EstadoEnum.Pendiente, IsDeleted = false }
                 );
-
             modelBuilder.Entity<Producto>().HasData(
-                new Producto
-                {
-                    Id = 1,
-                    Nombre = "Perfume Avon",
-                    Descripcion = "Un aroma fresco y duradero.",
-                    Precio = 299.99m,
-                    Stock = 50,
-                },
-                new Producto
-                {
-                    Id = 2,
-                    Nombre = "Labial Avon",
-                    Descripcion = "Color intenso y humectante.",
-                    Precio = 49.99m,
-                    Stock = 100,
-                    Categoria = TiposCategoriaEnums.Labial,
-                },
-                new Producto
-                {
-                    Id = 3,
-                    Nombre = "Crema Hidratante Avon",
-                    Descripcion = "Hidratación profunda para todo el día.",
-                    Precio = 89.99m,
-                    Stock = 75,
-                    Categoria = TiposCategoriaEnums.Crema,
-                },
-                new Producto
-                {
-                    Id = 4,
-                    Nombre = "Sombra de Ojos Avon",
-                    Descripcion = "Colores vibrantes y duraderos.",
-                    Precio = 59.99m,
-                    Stock = 80,
-                    Categoria = TiposCategoriaEnums.Sombras,
-                },
-                new Producto
-                {
-                    Id = 5,
-                    Nombre = "Esmalte de Uñas Avon",
-                    Descripcion = "Acabado brillante y secado rápido.",
-                    Precio = 39.99m,
-                    Stock = 120,
-                    Categoria = TiposCategoriaEnums.Esmaltes,
-                });
-            modelBuilder.Entity<VentaDetalle>().HasData(
-                new VentaDetalle
-                {
-                    Id = 1,
-                    VentaId = 1,
-                    ProductoId = 1,
-                    Cantidad = 2,
-                    PrecioUnitario = 299.99m,
-                },
-                new VentaDetalle
-                {
-                    Id = 2,
-                    VentaId = 1,
-                    ProductoId = 2,
-                    Cantidad = 1,
-                    PrecioUnitario = 49.99m,
-                },
-                new VentaDetalle
-                {
-                    Id = 3,
-                    VentaId = 1,
-                    ProductoId = 3,
-                    Cantidad = 1,
-                    PrecioUnitario = 89.99m,
-                
-                },
-                new VentaDetalle
-                {
-                    Id = 4,
-                    VentaId = 2,
-                    ProductoId = 4,
-                    Cantidad = 2,
-                    PrecioUnitario = 59.99m,
-                }
+                new Producto { Id = 1, Nombre = "Crema Hidratante", Descripcion = "Crema para hidratar la piel", Categoria = TiposCategoriaEnums.Crema, Precio = 32000, Stock = 100, IsDeleted = false },
+                new Producto { Id = 2, Nombre = "Labial liquido", Descripcion = "Efecto mate", Categoria = TiposCategoriaEnums.Labial, Precio = 12000, Stock = 150, IsDeleted = false },
+                new Producto { Id = 3, Nombre = "Sombras", Descripcion = "Estilo highlight", Categoria = TiposCategoriaEnums.Sombras, Precio = 18.00m, Stock = 120, IsDeleted = false },
+                new Producto { Id = 4, Nombre = "Esmalte de uñas", Descripcion = "Efecto cracheado", Categoria = TiposCategoriaEnums.Esmaltes, Precio = 30.00m, Stock = 80, IsDeleted = false },
+                new Producto { Id = 5, Nombre = "Perfume", Descripcion = "De estilo floral", Categoria = TiposCategoriaEnums.Perfume, Precio = 22.00m, Stock = 90, IsDeleted = false }
                 );
-
             modelBuilder.Entity<Usuario>().HasData(
+                new Usuario { Id = 1, Nombre = "Amanda", Email = "amada@gmail.com", Password = "amanda123", Rol = Service.Enums.RolEnum.Administrador },
+                new Usuario { Id = 6, Nombre = "Juana", Email = "juana@gmail.com", Password = "juana123", Rol = Service.Enums.RolEnum.Vendedor },
+                new Usuario { Id = 2, Nombre = "Pedro", Email = "pedro@gmail.com", Password = "pedro123", Rol = Service.Enums.RolEnum.Vendedor },
                 new Usuario
                 {
-                    Id = 1,
-                    Nombre = "Juan",
-                    Correo = "juancho@gmail.com",
-                    Password = "juan123",
-                    Rol = RolEnum.Administrador,
-
+                    Id = 3,
+                    Nombre = "Maria",
+                    Email = "maria@gmail.com",
+                    Password = "maria123",
+                    Rol = Service.Enums.RolEnum.Vendedor
                 },
-                 new Usuario
-                 {
-                     Id = 2,
-                     Nombre = "Maria",
-                     Correo = "mariana@gmail.com",
-                     Password = "maria123",
-                     Rol = RolEnum.Vendedor,
-                 },
-                  new Usuario
-                  {
-                      Id = 3,
-                      Nombre = "Patricio",
-                      Correo = "estrellademar@gmail.com",
-                      Password= "patry123",
-                      Rol = RolEnum.Cliente,
-                  },
-                  new Usuario
-                  {
-                      Id = 4,
-                      Nombre = "Ana",
-                      Correo = "annita@gmail.com",
-                      Password = "anne1223",
-                      Rol = RolEnum.Proveedor,
-                  }
-                  );
-
+                new Usuario
+                {
+                    Id = 4,
+                    Nombre = "Luisa",
+                    Email = "luisa@gmail.com",
+                    Password = "luisa123",
+                    Rol = Service.Enums.RolEnum.Cliente
+                },
+                new Usuario { Id = 5, Nombre = "Carlos", Email = "carlos@gmail.com", Password = "carlos123", Rol = Service.Enums.RolEnum.Cliente }
+                );
+            modelBuilder.Entity<VentaDetalle>().HasData(
+                new VentaDetalle { Id = 1, VentaId = 1, ProductoNombre = "Prefume", Cantidad = 2, PrecioUnitario = 32000, IsDeleted = false },
+                new VentaDetalle { Id = 2, VentaId = 1, ProductoNombre = "Crema", Cantidad = 1, PrecioUnitario = 12000, IsDeleted = false },
+                new VentaDetalle { Id = 3, VentaId = 2, ProductoNombre = "Labial", Cantidad = 3, PrecioUnitario = 18000, IsDeleted = false },
+                new VentaDetalle { Id = 4, VentaId = 2, ProductoNombre = "Sombras", Cantidad = 1, PrecioUnitario = 30000, IsDeleted = false },
+                new VentaDetalle { Id = 5, VentaId = 3, ProductoNombre = "Esmalte", Cantidad = 2, PrecioUnitario = 22000, IsDeleted = false }
+                );
+            modelBuilder.Entity<Menu>().HasData(
+                new Menu { Id = 1, Nombre = "Gestión de Ventas", Descripcion = "Acceso al módulo de ventas", IsDeleted = false },
+                new Menu { Id = 2, Nombre = "Gestión de Productos", Descripcion = "Acceso al módulo de productos", IsDeleted = false },
+                new Menu { Id = 3, Nombre = "Reportes", Descripcion = "Acceso a reportes del sistema", IsDeleted = false },
+                new Menu { Id = 4, Nombre = "Mis Compras", Descripcion = "Historial de compras del cliente", IsDeleted = false }
+                );
+            modelBuilder.Entity<MenuRol>().HasData(
+                new MenuRol { Id = 1, MenuId = 1, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 2, MenuId = 1, Rol = RolEnum.Vendedor, IsDeleted = false },
+                new MenuRol { Id = 3, MenuId = 2, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 4, MenuId = 2, Rol = RolEnum.Vendedor, IsDeleted = false },
+                new MenuRol { Id = 5, MenuId = 3, Rol = RolEnum.Administrador, IsDeleted = false },
+                new MenuRol { Id = 6, MenuId = 4, Rol = RolEnum.Cliente, IsDeleted = false }
+                );
 
 
 
@@ -211,8 +114,10 @@ namespace Backend.DataContext
             modelBuilder.Entity<Producto>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<Usuario>().HasQueryFilter(u => !u.IsDeleted);
             modelBuilder.Entity<VentaDetalle>().HasQueryFilter(vd => !vd.IsDeleted);
+            modelBuilder.Entity<Menu>().HasQueryFilter(m => !m.IsDeleted);
+            modelBuilder.Entity<MenuRol>().HasQueryFilter(mr => !mr.IsDeleted);
 
-        }
+        } 
         
 
     }
