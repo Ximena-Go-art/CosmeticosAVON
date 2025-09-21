@@ -124,7 +124,7 @@
     <value>cosmeticos-6527d.firebaseapp.com</value>
   </data>
   <data name="URLApi" xml:space="preserve">
-    <value>apicosmeticosavon.azurewebsites.net/api/</value>
+    <value>https://apicosmeticosavon.azurewebsites.net/api/</value>
   </data>
   <data name="UrlApiLocal" xml:space="preserve">
     <value>https://localhost:9000/api/</value>

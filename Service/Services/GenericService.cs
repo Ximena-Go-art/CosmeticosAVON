@@ -20,8 +20,8 @@ namespace Service.Services
         {
             _httpClient = new HttpClient();
             _options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-            //_endpoint = Properties.Resources.UrlApi + ApiEndPoints.GetEndpoint(typeof(T).Name);
-            _endpoint = Properties.Resources.UrlApiLocal + ApiEndPoints.GetEndpoint(typeof(T).Name);
+            _endpoint = Properties.Resources.URLApi + ApiEndPoints.GetEndpoint(typeof(T).Name);
+            //_endpoint = Properties.Resources.UrlApiLocal + ApiEndPoints.GetEndpoint(typeof(T).Name);
         }
         public async Task<T?> AddAsync(T? entity)
         {

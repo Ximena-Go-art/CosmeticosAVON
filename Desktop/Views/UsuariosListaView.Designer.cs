@@ -207,7 +207,7 @@
             // 
             // TimerStatusBar
             // 
-            TimerStatusBar.Interval = 5000;
+            TimerStatusBar.Interval = 500;
             // 
             // UsuariosListaView
             // 
