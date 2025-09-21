@@ -65,12 +65,12 @@ namespace Backend.DataContext
                 new Producto { Id = 5, Nombre = "Perfume", Descripcion = "De estilo floral", Categoria = TiposCategoriaEnums.Perfume, Precio = 22.00m, Stock = 90, IsDeleted = false }
                 );
             modelBuilder.Entity<Usuario>().HasData(
-                new Usuario { Id = 1, Nombre = "Amanda", Email = "amada@gmail.com", Password = "amanda123", Rol = Service.Enums.RolEnum.Administrador },
-                new Usuario { Id = 6, Nombre = "Juana", Email = "juana@gmail.com", Password = "juana123", Rol = Service.Enums.RolEnum.Vendedor },
-                new Usuario { Id = 2, Nombre = "Pedro", Email = "pedro@gmail.com", Password = "pedro123", Rol = Service.Enums.RolEnum.Vendedor },
+                new Usuario { id = 1, Nombre = "Amanda", Email = "amada@gmail.com", Password = "amanda123", Rol = Service.Enums.RolEnum.Administrador },
+                new Usuario { id = 6, Nombre = "Juana", Email = "juana@gmail.com", Password = "juana123", Rol = Service.Enums.RolEnum.Vendedor },
+                new Usuario { id = 2, Nombre = "Pedro", Email = "pedro@gmail.com", Password = "pedro123", Rol = Service.Enums.RolEnum.Vendedor },
                 new Usuario
                 {
-                    Id = 3,
+                    id = 3,
                     Nombre = "Maria",
                     Email = "maria@gmail.com",
                     Password = "maria123",
@@ -78,13 +78,13 @@ namespace Backend.DataContext
                 },
                 new Usuario
                 {
-                    Id = 4,
+                    id = 4,
                     Nombre = "Luisa",
                     Email = "luisa@gmail.com",
                     Password = "luisa123",
                     Rol = Service.Enums.RolEnum.Cliente
                 },
-                new Usuario { Id = 5, Nombre = "Carlos", Email = "carlos@gmail.com", Password = "carlos123", Rol = Service.Enums.RolEnum.Cliente }
+                new Usuario { id = 5, Nombre = "Carlos", Email = "carlos@gmail.com", Password = "carlos123", Rol = Service.Enums.RolEnum.Cliente }
                 );
             modelBuilder.Entity<VentaDetalle>().HasData(
                 new VentaDetalle { Id = 1, VentaId = 1, ProductoNombre = "Prefume", Cantidad = 2, PrecioUnitario = 32000, IsDeleted = false },

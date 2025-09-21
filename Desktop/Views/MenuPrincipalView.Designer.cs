@@ -33,19 +33,13 @@
             SubMenuUsuarios = new ToolStripMenuItem();
             SubMenuConsultores = new ToolStripMenuItem();
             SunMenuProductos = new ToolStripMenuItem();
+            SubMenuMiHistorial = new ToolStripMenuItem();
             SubMenuContactanos = new ToolStripMenuItem();
             SubMenuHistoria = new ToolStripMenuItem();
             contactanosToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             SubMenuSalir = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
-            SubMenuListaUsuarios = new ToolStripMenuItem();
-            SubMenuNuevoUsuario = new ToolStripMenuItem();
-            SubMenuListaVentas = new ToolStripMenuItem();
-            SubMenuNuevaVenta = new ToolStripMenuItem();
-            SubMenuListaProductos = new ToolStripMenuItem();
-            SubMenuNuevoProducto = new ToolStripMenuItem();
-            SubMenuMiHistorial = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,24 +62,28 @@
             // 
             // SubMenuUsuarios
             // 
-            SubMenuUsuarios.DropDownItems.AddRange(new ToolStripItem[] { SubMenuListaUsuarios, SubMenuNuevoUsuario });
             SubMenuUsuarios.Name = "SubMenuUsuarios";
             SubMenuUsuarios.Size = new Size(224, 26);
             SubMenuUsuarios.Text = "Usuarios";
+            SubMenuUsuarios.Click += SubMenuUsuarios_Click;
             // 
             // SubMenuConsultores
             // 
-            SubMenuConsultores.DropDownItems.AddRange(new ToolStripItem[] { SubMenuListaVentas, SubMenuNuevaVenta });
             SubMenuConsultores.Name = "SubMenuConsultores";
             SubMenuConsultores.Size = new Size(224, 26);
             SubMenuConsultores.Text = "Ventas";
             // 
             // SunMenuProductos
             // 
-            SunMenuProductos.DropDownItems.AddRange(new ToolStripItem[] { SubMenuListaProductos, SubMenuNuevoProducto });
             SunMenuProductos.Name = "SunMenuProductos";
             SunMenuProductos.Size = new Size(224, 26);
             SunMenuProductos.Text = "Productos";
+            // 
+            // SubMenuMiHistorial
+            // 
+            SubMenuMiHistorial.Name = "SubMenuMiHistorial";
+            SubMenuMiHistorial.Size = new Size(224, 26);
+            SubMenuMiHistorial.Text = "Mi Histotial";
             // 
             // SubMenuContactanos
             // 
@@ -129,48 +127,6 @@
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
-            // SubMenuListaUsuarios
-            // 
-            SubMenuListaUsuarios.Name = "SubMenuListaUsuarios";
-            SubMenuListaUsuarios.Size = new Size(224, 26);
-            SubMenuListaUsuarios.Text = "Lista de usuarios";
-            // 
-            // SubMenuNuevoUsuario
-            // 
-            SubMenuNuevoUsuario.Name = "SubMenuNuevoUsuario";
-            SubMenuNuevoUsuario.Size = new Size(224, 26);
-            SubMenuNuevoUsuario.Text = "Nuevo Usuario";
-            // 
-            // SubMenuListaVentas
-            // 
-            SubMenuListaVentas.Name = "SubMenuListaVentas";
-            SubMenuListaVentas.Size = new Size(190, 26);
-            SubMenuListaVentas.Text = "Lista de Ventas";
-            // 
-            // SubMenuNuevaVenta
-            // 
-            SubMenuNuevaVenta.Name = "SubMenuNuevaVenta";
-            SubMenuNuevaVenta.Size = new Size(190, 26);
-            SubMenuNuevaVenta.Text = "Nueva Venta";
-            // 
-            // SubMenuListaProductos
-            // 
-            SubMenuListaProductos.Name = "SubMenuListaProductos";
-            SubMenuListaProductos.Size = new Size(213, 26);
-            SubMenuListaProductos.Text = "Lista de Productos";
-            // 
-            // SubMenuNuevoProducto
-            // 
-            SubMenuNuevoProducto.Name = "SubMenuNuevoProducto";
-            SubMenuNuevoProducto.Size = new Size(213, 26);
-            SubMenuNuevoProducto.Text = "Nuevo Producto";
-            // 
-            // SubMenuMiHistorial
-            // 
-            SubMenuMiHistorial.Name = "SubMenuMiHistorial";
-            SubMenuMiHistorial.Size = new Size(224, 26);
-            SubMenuMiHistorial.Text = "Mi Histotial";
-            // 
             // MenuPrincipalView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -181,6 +137,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalView";
             Text = "Venta de Cosmeticos";
+            WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -200,12 +157,6 @@
         private ToolStripMenuItem SubMenuSalir;
         private ToolStrip toolStrip1;
         private ToolStripMenuItem contactanosToolStripMenuItem;
-        private ToolStripMenuItem SubMenuListaUsuarios;
-        private ToolStripMenuItem SubMenuNuevoUsuario;
-        private ToolStripMenuItem SubMenuListaVentas;
-        private ToolStripMenuItem SubMenuNuevaVenta;
-        private ToolStripMenuItem SubMenuListaProductos;
-        private ToolStripMenuItem SubMenuNuevoProducto;
         private ToolStripMenuItem SubMenuMiHistorial;
     }
 }

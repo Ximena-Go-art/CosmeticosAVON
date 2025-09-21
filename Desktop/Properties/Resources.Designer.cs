@@ -22,7 +22,7 @@ namespace Desktop.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -63,9 +63,89 @@ namespace Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _56d3a0f95894547f904508fff240206d {
+            get {
+                object obj = ResourceManager.GetObject("56d3a0f95894547f904508fff240206d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap f0925a8958ac8ea048b98f828a087882 {
+            get {
+                object obj = ResourceManager.GetObject("f0925a8958ac8ea048b98f828a087882", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ffc363619682483ba95f205a9e2e2794 {
+            get {
+                object obj = ResourceManager.GetObject("ffc363619682483ba95f205a9e2e2794", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap freepik_br_d2a507e3_8644_4ed5_999a_ad8e9f7e4b33 {
             get {
                 object obj = ResourceManager.GetObject("freepik_br_d2a507e3-8644-4ed5-999a-ad8e9f7e4b33", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_3h9wlo3h9wlo3h9w {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_3h9wlo3h9wlo3h9w", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_c3nktcc3nktcc3nk {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_c3nktcc3nktcc3nk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_cog57ccog57ccog5 {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_cog57ccog57ccog5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_ke1raeke1raeke1r {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_ke1raeke1raeke1r", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

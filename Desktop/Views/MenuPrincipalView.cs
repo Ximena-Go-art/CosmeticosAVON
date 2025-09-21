@@ -1,3 +1,5 @@
+using Desktop.Views;
+
 namespace Desktop
 {
     public partial class MenuPrincipalView : Form
@@ -12,5 +14,11 @@ namespace Desktop
             this.Close();
         }
 
+        private void SubMenuUsuarios_Click(object sender, EventArgs e)
+        {
+            var usuariosListaView = new UsuariosListaView();
+            usuariosListaView.MdiParent = this;
+            usuariosListaView.Show();
+        }
     }
 }
