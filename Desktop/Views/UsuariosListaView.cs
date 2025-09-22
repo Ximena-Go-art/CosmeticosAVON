@@ -93,7 +93,7 @@ namespace Desktop.Views
         {
             this.Close();
         }
-        private void LimpiarControlesAgregarEditar()//no funciona
+        private void LimpiarControlesAgregarEditar()
         {
             TxtNombre.Clear();
             TxtEmail.Clear();
@@ -201,6 +201,7 @@ namespace Desktop.Views
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             TabControl.SelectedTab = ListaUsuariosPage;
+            LimpiarControlesAgregarEditar();
         }
 
         private async void BtnBuscar_Click(object sender, EventArgs e) //No funciona

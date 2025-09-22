@@ -23,9 +23,13 @@ namespace Backend.Controllers
 
         // GET: api/Usuarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios([FromQuery] string? filter = "")
         {
-            return await _context.Usuarios.ToListAsync();
+            return await _context.Usuarios
+                .Where(u => string.IsNullOrEmpty(filter) ||
+                            u.Nombre.Contains(filter) ||
+                            u.Email.Contains(filter))
+                .ToListAsync();
         }
 
         // GET: api/Usuarios/5
