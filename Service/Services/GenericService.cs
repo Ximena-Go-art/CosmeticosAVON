@@ -55,7 +55,7 @@ namespace Service.Services
             return JsonSerializer.Deserialize<List<T>>(content, _options);
         }
 
-        public async Task<List<T>?> GetAllDeletedsAsync(string? filtro)
+        public async Task<List<T>?> GetAllDeletedsAsync(string? filtro="")
         {
             var response = await _httpClient.GetAsync($"{_endpoint}/deleteds");
             var content = await response.Content.ReadAsStringAsync();
@@ -89,7 +89,7 @@ namespace Service.Services
 
         public async Task<bool> UpdateAsync(T? entity)
         {
-            var IdValue = entity.GetType().GetProperty("Id").GetValue(entity);
+            var IdValue = entity.GetType().GetProperty("id").GetValue(entity);
             //se optiene el Id value
             var response = await _httpClient.PutAsJsonAsync($"{_endpoint}/{IdValue}", entity);
             if (!response.IsSuccessStatusCode)
