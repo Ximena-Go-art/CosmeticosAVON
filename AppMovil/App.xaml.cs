@@ -1,4 +1,6 @@
-﻿namespace AppMovil
+﻿using AppMovil.Views;
+
+namespace AppMovil
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new CosmeticosShell();
         }
     }
 }

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{5A7C49B0-26B7-465F-8C99-9FC1C0D83659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMovil", "AppMovil\AppMovil.csproj", "{C003025A-AB73-4D44-ABF5-D4FC5D0D3A5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovilApp", "AppMovil\MovilApp.csproj", "{C003025A-AB73-4D44-ABF5-D4FC5D0D3A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
