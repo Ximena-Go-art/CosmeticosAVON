@@ -1,6 +1,7 @@
 ﻿using Service.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Service.Models
         public string Nombre { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public TiposCategoriaEnums Categoria { get; set; } = TiposCategoriaEnums.Crema;
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Precio { get; set; }
         public int Stock { get; set; }
         public bool IsDeleted { get; set; } = false;
