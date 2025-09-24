@@ -1,0 +1,50 @@
+﻿@page "/productos"
+@inject IGenericService<Producto> _productosService
+
+
+<PageTitle>Productos</PageTitle>
+
+<h1>Productos</h1>
+
+<h4>Encuentra lo que estas buscando</h4>
+
+@if (productos==null)
+{
+    <p><em>Cargando ...</em></p>
+}
+else if (productos.Count == 0)
+{
+    <p><em>No hay productos registrados.</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in productos)
+            {
+                <tr>
+                    <td>@producto.Nombre</td>
+                    <td>@producto.Precio</td>
+                    <td>@producto.Categoria</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+    
+
+
+@code {
+    private List<Producto> productos;
+    protected override async Task OnInitializedAsync()
+    {
+        productos = (await _productosService.GetAllAsync(null))?.ToList();
+    }
+}
