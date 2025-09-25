@@ -1,6 +1,6 @@
 ﻿@page "/LogIn"
 @inject FirebaseAuthService firebaseAuthService
-@inject SweetAlertService SweetAlert
+@inject SweetAlertService sweetAlert
 @inject NavigationManager navigationManager
 
 @if (!isAuthenticated)
@@ -67,12 +67,17 @@ else
         var user = await firebaseAuthService.SignInWithEmailPassword(email, password);
         if (user != null)
         {
+            if (user.EmailVerified == false)
+            {
+                await sweetAlert.FireAsync("Verificación de correo", "Por favor, verifica tu correo electrónico antes de iniciar sesión.", SweetAlertIcon.Warning);
+                return;
+            }
             isAuthenticated = true; // Simula que el usuario se ha autenticado correctamente
             StateHasChanged(); //metodo que se llama en la pagina para que se reevalue y se redibuje, el estado tiene un cambio
         }
         else
         {
-            await SweetAlert.FireAsync("Error de autenticación", "Usuario o contraseña incorrectos", SweetAlertIcon.Error);
+            await sweetAlert.FireAsync("Error de autenticación", "Usuario o contraseña incorrectos", SweetAlertIcon.Error);
         }
 
     }
