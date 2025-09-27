@@ -62,6 +62,7 @@
             // 
             // TabControl
             // 
+            TabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TabControl.Controls.Add(ListaUsuariosPage);
             TabControl.Controls.Add(AgregarEditarUsuarios);
             TabControl.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -84,9 +85,11 @@
             ListaUsuariosPage.Controls.Add(BtnBuscar);
             ListaUsuariosPage.Controls.Add(BtnModificar);
             ListaUsuariosPage.Controls.Add(BtnAgregar);
+            ListaUsuariosPage.ImeMode = ImeMode.NoControl;
             ListaUsuariosPage.Location = new Point(4, 27);
             ListaUsuariosPage.Name = "ListaUsuariosPage";
             ListaUsuariosPage.Padding = new Padding(3);
+            ListaUsuariosPage.RightToLeft = RightToLeft.No;
             ListaUsuariosPage.Size = new Size(790, 376);
             ListaUsuariosPage.TabIndex = 0;
             ListaUsuariosPage.Text = "Lista de Usuarios";
@@ -103,6 +106,7 @@
             // 
             // BtnRestaurar
             // 
+            BtnRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnRestaurar.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnRestaurar.Location = new Point(643, 221);
             BtnRestaurar.Name = "BtnRestaurar";
@@ -114,6 +118,7 @@
             // 
             // CheckVerEliminados
             // 
+            CheckVerEliminados.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CheckVerEliminados.AutoSize = true;
             CheckVerEliminados.Location = new Point(642, 11);
             CheckVerEliminados.Name = "CheckVerEliminados";
@@ -127,6 +132,8 @@
             // 
             GridUsuarios.AllowUserToAddRows = false;
             GridUsuarios.AllowUserToDeleteRows = false;
+            GridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            GridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GridUsuarios.BackgroundColor = Color.Snow;
             GridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridUsuarios.Location = new Point(21, 44);
@@ -139,6 +146,7 @@
             // 
             // BtnSalir
             // 
+            BtnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BtnSalir.BackColor = Color.LavenderBlush;
             BtnSalir.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnSalir.Location = new Point(717, 320);
@@ -151,6 +159,7 @@
             // 
             // TxtBuscar
             // 
+            TxtBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TxtBuscar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtBuscar.Location = new Point(8, 12);
             TxtBuscar.Name = "TxtBuscar";
@@ -159,6 +168,7 @@
             // 
             // BtnEliminar
             // 
+            BtnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnEliminar.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnEliminar.Location = new Point(643, 170);
             BtnEliminar.Name = "BtnEliminar";
@@ -170,6 +180,7 @@
             // 
             // BtnBuscar
             // 
+            BtnBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnBuscar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnBuscar.Location = new Point(520, 6);
             BtnBuscar.Name = "BtnBuscar";
@@ -181,6 +192,7 @@
             // 
             // BtnModificar
             // 
+            BtnModificar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnModificar.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnModificar.Location = new Point(643, 119);
             BtnModificar.Name = "BtnModificar";
@@ -192,6 +204,7 @@
             // 
             // BtnAgregar
             // 
+            BtnAgregar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnAgregar.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnAgregar.Location = new Point(643, 68);
             BtnAgregar.Name = "BtnAgregar";
@@ -325,14 +338,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LavenderBlush;
-            BackgroundImage = Properties.Resources.f0925a8958ac8ea048b98f828a087882;
-            BackgroundImageLayout = ImageLayout.Zoom;
+            BackColor = Color.DeepPink;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
             Controls.Add(TabControl);
             Name = "UsuariosListaView";
             Text = "Usuarios";
+            WindowState = FormWindowState.Maximized;
             TabControl.ResumeLayout(false);
             ListaUsuariosPage.ResumeLayout(false);
             ListaUsuariosPage.PerformLayout();

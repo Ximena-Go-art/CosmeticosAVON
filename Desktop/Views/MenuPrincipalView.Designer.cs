@@ -1,4 +1,4 @@
-﻿namespace Desktop
+﻿namespace Desktop.Views
 {
     partial class MenuPrincipalView
     {
@@ -134,6 +134,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
+            IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalView";
             Text = "Venta de Cosmeticos";
