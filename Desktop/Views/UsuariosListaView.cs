@@ -206,7 +206,23 @@ namespace Desktop.Views
 
         private async void BtnBuscar_Click(object sender, EventArgs e) //No funciona
         {
-            GridUsuarios.DataSource = await _usuarioService.GetAllAsync(TxtBuscar.Text);
+            string filtro = TxtBuscar.Text.Trim();//elimina los espacios de la palabra
+
+            // Intentar parsear el filtro como un RolEnum
+            if (Enum.TryParse<RolEnum>(filtro, true, out var rolBuscado))
+            //combierte el texto a enum y lo almacena en rolBuscado.
+            {
+                // Obtener todos los usuarios y filtrar por rol
+                var usuarios = await _usuarioService.GetAllAsync();
+                
+                GridUsuarios.DataSource = usuarios?.Where(u => u.Rol == rolBuscado).ToList();
+            }
+            else
+            {
+                // Búsqueda normal por nombre/email
+                GridUsuarios.DataSource = await _usuarioService.GetAllAsync(filtro);
+            }
         }
     }
+    
 }
