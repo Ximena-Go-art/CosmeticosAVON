@@ -78,6 +78,7 @@
             SunMenuProductos.Name = "SunMenuProductos";
             SunMenuProductos.Size = new Size(224, 26);
             SunMenuProductos.Text = "Productos";
+            SunMenuProductos.Click += SunMenuProductos_Click;
             // 
             // SubMenuMiHistorial
             // 

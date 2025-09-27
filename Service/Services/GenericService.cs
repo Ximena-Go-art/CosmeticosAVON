@@ -89,7 +89,7 @@ namespace Service.Services
 
         public async Task<bool> UpdateAsync(T? entity)
         {
-            var IdValue = entity.GetType().GetProperty("id").GetValue(entity);
+            var IdValue = entity.GetType().GetProperty("Id").GetValue(entity);
             //se optiene el Id value
             var response = await _httpClient.PutAsJsonAsync($"{_endpoint}/{IdValue}", entity);
             if (!response.IsSuccessStatusCode)

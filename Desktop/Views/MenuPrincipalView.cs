@@ -24,9 +24,16 @@ namespace Desktop.Views
 
         private void SubMenuUsuarios_Click(object sender, EventArgs e)
         {
-           var usuariosView = new UsuariosListaView();
-             usuariosView.MdiParent = this;
-               usuariosView.Show();
+            var usuariosView = new UsuariosListaView();
+            usuariosView.MdiParent = this;
+            usuariosView.Show();
+        }
+
+        private void SunMenuProductos_Click(object sender, EventArgs e)
+        {
+            var productosView = new ProductosListaView();
+            productosView.MdiParent = this;
+            productosView.Show();
         }
     }
 }
