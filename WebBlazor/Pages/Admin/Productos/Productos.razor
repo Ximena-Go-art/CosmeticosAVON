@@ -20,7 +20,7 @@ else if (productos.Count == 0)
 }
 else
 {
-    <NavLink class="btn btn-primary mb-3" href=@($"NuevoEditarProducto")>
+    <NavLink class="btn btn-primary mb-3" href=@($"nuevoeditarproductos")>
         Nuevo Producto
     </NavLink>
     <table class="table">
@@ -46,7 +46,7 @@ else
 
                     </td>
                     <td>
-                        <NavLink class="btn btn-info" href=@($"NuevoEditarProducto?IdProducto={producto.Id}")>
+                        <NavLink class="btn btn-info" href=@($"nuevoeditarproductos?IdProducto={producto.Id}")>
                             Editar
                         </NavLink>
                     </td>
@@ -79,11 +79,11 @@ else
         {
             if (await _productosService.DeleteAsync(producto.Id))
             {
-                await _sweetAlertService.FireAsync("Eliminado", "La capacitación ha sido eliminada.", SweetAlertIcon.Success);
+                await _sweetAlertService.FireAsync("Eliminado", "El producto ha sido eliminada.", SweetAlertIcon.Success);
             }
             else
             {
-                await _sweetAlertService.FireAsync("Error", "No se pudo eliminar la capacitación.", SweetAlertIcon.Error);
+                await _sweetAlertService.FireAsync("Error", "No se pudo eliminar el producto.", SweetAlertIcon.Error);
                 return;
             }
         }
