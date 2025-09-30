@@ -1,0 +1,92 @@
+﻿@page "/productos"
+@inject IGenericService<Producto> _productosService
+@inject SweetAlertService _sweetAlertService
+@inject NavigationManager _navigationManager
+
+
+<PageTitle>Productos</PageTitle>
+
+<h1>Productos</h1>
+
+<h4>Encuentra lo que estas buscando</h4>
+
+@if (productos==null)
+{
+    <p><em>Cargando ...</em></p>
+}
+else if (productos.Count == 0)
+{
+    <p><em>No hay productos registrados.</em></p>
+}
+else
+{
+    <NavLink class="btn btn-primary mb-3" href=@($"NuevoEditarProducto")>
+        Nuevo Producto
+    </NavLink>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoria</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in productos)
+            {
+                <tr>
+                    <td>@producto.Nombre</td>
+                    <td>@producto.Precio</td>
+                    <td>@producto.Stock</td>
+                    <td>@producto.Categoria</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteProducto (producto)">Eliminar</button>
+
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-info" href=@($"NuevoEditarProducto?IdProducto={producto.Id}")>
+                            Editar
+                        </NavLink>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+    
+
+
+@code {
+    private List<Producto> productos;
+    protected override async Task OnInitializedAsync()
+    {
+        productos = (await _productosService.GetAllAsync(null))?.ToList();
+    }
+    private async Task DeleteProducto(Producto producto)
+    {
+        var respuesta = await _sweetAlertService.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Estás seguro?",
+            Text = $"¿Deseas eliminar la capacitación '{producto.Nombre}'?",
+            Icon = SweetAlertIcon.Warning,
+            ShowCancelButton = true,
+            ConfirmButtonText = "Sí, eliminar",
+            CancelButtonText = "Cancelar"
+        });
+        if (respuesta.IsConfirmed)
+        {
+            if (await _productosService.DeleteAsync(producto.Id))
+            {
+                await _sweetAlertService.FireAsync("Eliminado", "La capacitación ha sido eliminada.", SweetAlertIcon.Success);
+            }
+            else
+            {
+                await _sweetAlertService.FireAsync("Error", "No se pudo eliminar la capacitación.", SweetAlertIcon.Error);
+                return;
+            }
+        }
+
+    }
+}

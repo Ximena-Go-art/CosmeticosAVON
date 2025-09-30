@@ -94,7 +94,7 @@
             ListaUsuariosPage.RightToLeft = RightToLeft.No;
             ListaUsuariosPage.Size = new Size(790, 376);
             ListaUsuariosPage.TabIndex = 0;
-            ListaUsuariosPage.Text = "Lista de Usuarios";
+            ListaUsuariosPage.Text = "Lista";
             // 
             // LabelStatusMessage
             // 
@@ -232,7 +232,7 @@
             AgregarEditarUsuarios.Padding = new Padding(3);
             AgregarEditarUsuarios.Size = new Size(790, 376);
             AgregarEditarUsuarios.TabIndex = 1;
-            AgregarEditarUsuarios.Text = "Agregar/Editar Usuarios";
+            AgregarEditarUsuarios.Text = "Agregar/Editar";
             AgregarEditarUsuarios.UseVisualStyleBackColor = true;
             // 
             // NumPrecio
