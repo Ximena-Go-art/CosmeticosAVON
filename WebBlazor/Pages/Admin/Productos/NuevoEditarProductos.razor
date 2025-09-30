@@ -52,13 +52,13 @@ else
     public int idProducto { get; set; }
     private Producto? producto;
 
-    private bool isEditing => idProducto != null;
+    private bool isEditing => idProducto != 0;
     private string guardarButtonText => isEditing ? "Actualizar" : "Agregar";
-    private string tituloPagina => isEditing ? "Editando Producto" : "Agregando nueva Producto";
+    private string tituloPagina => isEditing ? "Editando Producto" : "Agregando nuevo Producto";
 
     protected override async Task OnInitializedAsync()
     {
-        if (idProducto != null)
+        if (idProducto!=0)
         {
             producto = await _productoService.GetByIdAsync(idProducto);
         }
@@ -71,15 +71,15 @@ else
     private async Task Guardar()
     {
         //logger.LogInformation(capacitacion.PropertiesToString());
-        if (idProducto != null)
+        if (idProducto != 0)
             await _productoService.UpdateAsync(producto);
         else
             await _productoService.AddAsync(producto);
-        _navigationManager.NavigateTo($"producto");
+        _navigationManager.NavigateTo($"productos");
     }
 
     private async Task Cancelar()
     {
-        _navigationManager.NavigateTo($"producto");
+        _navigationManager.NavigateTo($"productos");
     }
 }
