@@ -17,14 +17,13 @@ namespace Desktop.Views
 
     {
         GenericServices<Producto> _productoService = new GenericServices<Producto>();
-        Producto _currentProducto;
+        Producto? _currentProducto;
         List<Producto>? _productos;
         public ProductosListaView()
         {
             InitializeComponent();
             _ = GetAllData();
             CheckVerEliminados.CheckedChanged += DisplayHideControslRestoreButton;
-            CargarRoles();
         }
         private void DisplayHideControslRestoreButton(object? sender, EventArgs e)
         {
@@ -34,11 +33,6 @@ namespace Desktop.Views
             BtnModificar.Enabled = !CheckVerEliminados.Checked;
             BtnAgregar.Enabled = !CheckVerEliminados.Checked;
             BtnEliminar.Enabled = !CheckVerEliminados.Checked;
-        }
-        private void CargarRoles()
-        {
-            CbNum.DataSource = Enum.GetValues(typeof(TiposCategoriaEnums));
-            //cargamos los roles a la combobox
         }
         private async Task GetAllData()
         {
@@ -98,7 +92,7 @@ namespace Desktop.Views
         private void LimpiarControlesAgregarEditar()
         {
             TxtNombre.Clear();
-            CbNum.SelectedIndex = 0;
+            CbCategorias.AccessibleName = null;
             NumPrecio.Value = 0;
             NumStock.Value = 0;
             
@@ -153,7 +147,7 @@ namespace Desktop.Views
             {
                 _currentProducto = (Producto)GridProductos.SelectedRows[0].DataBoundItem;
                 TxtNombre.Text = _currentProducto.Nombre;
-                CbNum.SelectedItem = _currentProducto.Categoria;
+                CbCategorias.SelectedItem = _currentProducto.categoria;
                 NumPrecio.Value = _currentProducto.Precio;
                 NumStock.Value = _currentProducto.Stock;
                 // selecciona el rol actual del usuario
@@ -172,7 +166,7 @@ namespace Desktop.Views
             {
                 Id = _currentProducto?.Id ?? 0,
                 Nombre = TxtNombre.Text,
-                Categoria = (TiposCategoriaEnums)CbNum.SelectedItem,
+                categoria = CbCategorias.SelectedItem as Categoria,
                 Precio = NumPrecio.Value,//Ya es decimal
                 Stock = (int)NumStock.Value,//Decimal a int para el stock
 
@@ -211,22 +205,7 @@ namespace Desktop.Views
 
         private async void BtnBuscar_Click(object sender, EventArgs e) //No funciona
         {
-            string filtro = TxtBuscar.Text.Trim();//elimina los espacios de la palabra
-
-            // Intentar parsear el filtro como un RolEnum
-            if (Enum.TryParse<TiposCategoriaEnums>(filtro, true, out var enumBuscado))
-            //combierte el texto a enum y lo almacena en rolBuscado.
-            {
-                // Obtener todos los usuarios y filtrar por rol
-                var productos = await _productoService.GetAllAsync();
-                
-                GridProductos.DataSource = productos?.Where(p => p.Categoria == enumBuscado).ToList();
-            }
-            else
-            {
-                // Búsqueda normal por nombre/email
-                GridProductos.DataSource = await _productoService.GetAllAsync(filtro);
-            }
+            GridProductos.DataSource = await _productoService.GetAllAsync();
         }
     }
     

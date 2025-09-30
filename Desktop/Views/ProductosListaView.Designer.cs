@@ -45,7 +45,7 @@
             NumPrecio = new NumericUpDown();
             NumStock = new NumericUpDown();
             BtnCancelar = new Button();
-            CbNum = new ComboBox();
+            CbCategorias = new ComboBox();
             TxtNombre = new TextBox();
             label5 = new Label();
             label4 = new Label();
@@ -142,6 +142,7 @@
             GridProductos.Name = "GridProductos";
             GridProductos.ReadOnly = true;
             GridProductos.RowHeadersWidth = 51;
+            GridProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             GridProductos.Size = new Size(583, 293);
             GridProductos.TabIndex = 8;
             // 
@@ -220,7 +221,7 @@
             AgregarEditarUsuarios.Controls.Add(NumPrecio);
             AgregarEditarUsuarios.Controls.Add(NumStock);
             AgregarEditarUsuarios.Controls.Add(BtnCancelar);
-            AgregarEditarUsuarios.Controls.Add(CbNum);
+            AgregarEditarUsuarios.Controls.Add(CbCategorias);
             AgregarEditarUsuarios.Controls.Add(TxtNombre);
             AgregarEditarUsuarios.Controls.Add(label5);
             AgregarEditarUsuarios.Controls.Add(label4);
@@ -238,7 +239,7 @@
             // NumPrecio
             // 
             NumPrecio.Location = new Point(261, 137);
-            NumPrecio.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            NumPrecio.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             NumPrecio.Name = "NumPrecio";
             NumPrecio.Size = new Size(150, 26);
             NumPrecio.TabIndex = 12;
@@ -246,7 +247,7 @@
             // NumStock
             // 
             NumStock.Location = new Point(261, 186);
-            NumStock.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            NumStock.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
             NumStock.Name = "NumStock";
             NumStock.Size = new Size(150, 26);
             NumStock.TabIndex = 11;
@@ -261,13 +262,13 @@
             BtnCancelar.UseVisualStyleBackColor = true;
             BtnCancelar.Click += BtnCancelar_Click;
             // 
-            // CbNum
+            // CbCategorias
             // 
-            CbNum.FormattingEnabled = true;
-            CbNum.Location = new Point(261, 88);
-            CbNum.Name = "CbNum";
-            CbNum.Size = new Size(339, 26);
-            CbNum.TabIndex = 9;
+            CbCategorias.FormattingEnabled = true;
+            CbCategorias.Location = new Point(261, 88);
+            CbCategorias.Name = "CbCategorias";
+            CbCategorias.Size = new Size(339, 26);
+            CbCategorias.TabIndex = 9;
             // 
             // TxtNombre
             // 
@@ -387,7 +388,7 @@
         private Label label2;
         private Button button2;
         private Button BtnGuardar;
-        private ComboBox CbNum;
+        private ComboBox CbCategorias;
         private Button BtnCancelar;
         private NumericUpDown NumStock;
         private NumericUpDown NumPrecio;

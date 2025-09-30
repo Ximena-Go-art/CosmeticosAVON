@@ -29,12 +29,6 @@ else
                     </div>
                     <div class="form-group">
                         <label class="form-label">Categoría:</label>
-                        <InputSelect class="form-control mb-2" @bind-Value="producto.Categoria">
-                            @foreach (var categoria in Enum.GetValues<TiposCategoriaEnums>())
-                            {
-                                <option value="@categoria">@categoria</option>
-                            }
-                        </InputSelect>
                     </div>
                </div>
                     <ValidationSummary />

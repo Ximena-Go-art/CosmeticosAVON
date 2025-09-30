@@ -23,7 +23,7 @@ namespace Backend.Controllers
 
         // GET: api/Productos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
+        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos([FromQuery]string filter="" )
         {
             return await _context.Productos.ToListAsync();
         }

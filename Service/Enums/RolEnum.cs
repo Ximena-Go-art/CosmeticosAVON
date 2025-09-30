@@ -10,7 +10,6 @@ namespace Service.Enums
     {
         Administrador = 1,
         Vendedor = 2,
-        Proveedor = 3,
-        Cliente = 4
+        Cliente = 3
     }
 }

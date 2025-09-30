@@ -14,6 +14,7 @@ namespace Backend.DataContext
         public DbSet<VentaDetalle> VentaDetalles { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuRol> MenuRoles { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         public CosmeticosContext()
         {
@@ -58,11 +59,12 @@ namespace Backend.DataContext
                 new Venta { Id = 5, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 500.00m, Estado = EstadoEnum.Pendiente, IsDeleted = false }
                 );
             modelBuilder.Entity<Producto>().HasData(
-                new Producto { Id = 1, Nombre = "Crema Hidratante", Descripcion = "Crema para hidratar la piel", Categoria = TiposCategoriaEnums.Crema, Precio = 32000, Stock = 100, IsDeleted = false },
-                new Producto { Id = 2, Nombre = "Labial liquido", Descripcion = "Efecto mate", Categoria = TiposCategoriaEnums.Labial, Precio = 12000, Stock = 150, IsDeleted = false },
-                new Producto { Id = 3, Nombre = "Sombras", Descripcion = "Estilo highlight", Categoria = TiposCategoriaEnums.Sombras, Precio = 18.00m, Stock = 120, IsDeleted = false },
-                new Producto { Id = 4, Nombre = "Esmalte de uñas", Descripcion = "Efecto cracheado", Categoria = TiposCategoriaEnums.Esmaltes, Precio = 30.00m, Stock = 80, IsDeleted = false },
-                new Producto { Id = 5, Nombre = "Perfume", Descripcion = "De estilo floral", Categoria = TiposCategoriaEnums.Perfume, Precio = 22.00m, Stock = 90, IsDeleted = false }
+                new Producto 
+                { Id = 1, Nombre = "Prefume", Descripcion = "Perfume floral", TipoCategoriaId = 1, Precio = 32000, Stock = 50, IsDeleted = false },
+                new Producto { Id = 2, Nombre = "Crema", Descripcion = "Crema hidratante", TipoCategoriaId = 2, Precio = 12000, Stock = 30, IsDeleted = false },
+                new Producto { Id = 3, Nombre = "Labial", Descripcion = "Labial rojo", TipoCategoriaId = 3, Precio = 18000, Stock = 20, IsDeleted = false },
+                new Producto { Id = 4, Nombre = "Sombras", Descripcion = "Paleta de sombras", TipoCategoriaId = 3, Precio = 30000, Stock = 15, IsDeleted = false },
+                new Producto { Id = 5, Nombre = "Esmalte", Descripcion = "Esmalte de uñas", TipoCategoriaId = 3, Precio = 22000, Stock = 25, IsDeleted = false }
                 );
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario { id = 1, Nombre = "Amanda", Email = "amada@gmail.com", Password = "amanda123", Rol = Service.Enums.RolEnum.Administrador },
@@ -121,6 +123,13 @@ namespace Backend.DataContext
                  new MenuRol { Id = 9, MenuId = 2, Rol = RolEnum.Cliente, IsDeleted = false },
                  new MenuRol { Id = 10, MenuId = 4, Rol = RolEnum.Cliente, IsDeleted = false }
                 );
+            modelBuilder.Entity<Categoria>().HasData(
+                new Categoria { Id = 1, Nombre = "Perfumería", IsDeleted = false },
+                new Categoria { Id = 2, Nombre = "Cuidado de la piel", IsDeleted = false },
+                new Categoria { Id = 3, Nombre = "Maquillaje", IsDeleted = false },
+                new Categoria { Id = 4, Nombre = "Cuidado del cabello", IsDeleted = false },
+                new Categoria { Id = 5, Nombre = "Cuidado corporal", IsDeleted = false }
+                );
 
 
 
@@ -130,6 +139,7 @@ namespace Backend.DataContext
             modelBuilder.Entity<VentaDetalle>().HasQueryFilter(vd => !vd.IsDeleted);
             modelBuilder.Entity<Menu>().HasQueryFilter(m => !m.IsDeleted);
             modelBuilder.Entity<MenuRol>().HasQueryFilter(mr => !mr.IsDeleted);
+            modelBuilder.Entity<Categoria>().HasQueryFilter(c => !c.IsDeleted);
 
         } 
         

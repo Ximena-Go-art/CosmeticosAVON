@@ -136,6 +136,7 @@
             ForeColor = Color.LightPink;
             FormBorderStyle = FormBorderStyle.None;
             Name = "LogInView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LogInView";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
