@@ -44,6 +44,8 @@ namespace Desktop.Views
             {
 
                 _productos = await _productoService.GetAllAsync();
+                
+
             }
             GridProductos.DataSource = _productos;
             GridProductos.Columns["id"].Visible = false;
@@ -147,7 +149,7 @@ namespace Desktop.Views
             {
                 _currentProducto = (Producto)GridProductos.SelectedRows[0].DataBoundItem;
                 TxtNombre.Text = _currentProducto.Nombre;
-                CbCategorias.SelectedItem = _currentProducto.categoria;
+                CbCategorias.SelectedItem = _currentProducto.Categoria;
                 NumPrecio.Value = _currentProducto.Precio;
                 NumStock.Value = _currentProducto.Stock;
                 // selecciona el rol actual del usuario
@@ -166,7 +168,7 @@ namespace Desktop.Views
             {
                 Id = _currentProducto?.Id ?? 0,
                 Nombre = TxtNombre.Text,
-                categoria = CbCategorias.SelectedItem as Categoria,
+                Categoria = CbCategorias.SelectedItem as Categoria,
                 Precio = NumPrecio.Value,//Ya es decimal
                 Stock = (int)NumStock.Value,//Decimal a int para el stock
 

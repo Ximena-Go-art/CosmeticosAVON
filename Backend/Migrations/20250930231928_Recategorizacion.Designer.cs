@@ -4,6 +4,7 @@ using Backend.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(CosmeticosContext))]
-    partial class CosmeticosContextModelSnapshot : ModelSnapshot
+    [Migration("20250930231928_Recategorizacion")]
+    partial class Recategorizacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -452,7 +455,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6611),
+                            Fecha = new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1747),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 150.00m
@@ -461,7 +464,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6619),
+                            Fecha = new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1755),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 200.00m
@@ -470,7 +473,7 @@ namespace Backend.Migrations
                         {
                             Id = 3,
                             Estado = 3,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6621),
+                            Fecha = new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1759),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 300.00m
@@ -479,7 +482,7 @@ namespace Backend.Migrations
                         {
                             Id = 4,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6626),
+                            Fecha = new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1761),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 400.00m
@@ -488,7 +491,7 @@ namespace Backend.Migrations
                         {
                             Id = 5,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6628),
+                            Fecha = new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1764),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 500.00m
