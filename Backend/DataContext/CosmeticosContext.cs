@@ -59,18 +59,18 @@ namespace Backend.DataContext
                 new Venta { Id = 5, Nombre = "", Fecha = DateTime.Now, PrecioTotal = 500.00m, Estado = EstadoEnum.Pendiente, IsDeleted = false }
                 );
             modelBuilder.Entity<Categoria>().HasData(
-                new Categoria { Id = 1, Nombre = "Perfumería", IsDeleted = false },
-                new Categoria { Id = 2, Nombre = "Cuidado de la piel", IsDeleted = false },
+               new Categoria { Id = 1, Nombre = "Perfumería", IsDeleted = false },
+                new Categoria { Id = 2, Nombre = "Cuidado de la Piel", IsDeleted = false },
                 new Categoria { Id = 3, Nombre = "Maquillaje", IsDeleted = false },
-                new Categoria { Id = 4, Nombre = "Cuidado del cabello", IsDeleted = false },
-                new Categoria { Id = 5, Nombre = "Cuidado corporal", IsDeleted = false }
+                new Categoria { Id = 4, Nombre = "Cuidado del Cabello", IsDeleted = false },
+                new Categoria { Id = 5, Nombre = "Cuidado Corporal", IsDeleted = false }
                 );
             modelBuilder.Entity<Producto>().HasData(
-                new Producto { Id = 1, Nombre = "Perfume", Descripcion = "Perfume floral", CategoriaId = 1, Precio = 32000, Stock = 50, IsDeleted = false },
-                new Producto { Id = 2, Nombre = "Crema", Descripcion = "Crema hidratante", CategoriaId = 2, Precio = 12000, Stock = 30, IsDeleted = false },
-                new Producto { Id = 3, Nombre = "Labial", Descripcion = "Labial rojo", CategoriaId = 3, Precio = 18000, Stock = 20, IsDeleted = false },
-                new Producto { Id = 4, Nombre = "Sombras", Descripcion = "Paleta de sombras", CategoriaId =4 , Precio = 30000, Stock = 15, IsDeleted = false },
-                new Producto { Id = 5, Nombre = "Esmalte", Descripcion = "Esmalte de uñas", CategoriaId = 5, Precio = 22000, Stock = 40, IsDeleted = false }
+               new Producto { Id = 1, Nombre = "Perfume", Descripcion = "Perfume floral", CategoriaId = 1, Precio = 50000, Stock = 100, IsDeleted = false },
+                new Producto { Id = 2, Nombre = "Crema Hidratante", Descripcion = "Crema para piel seca", CategoriaId = 2, Precio = 20000, Stock = 150, IsDeleted = false },
+                new Producto { Id = 3, Nombre = "Labial", Descripcion = "Labial rojo intenso", CategoriaId = 3, Precio = 15000, Stock = 200, IsDeleted = false },
+                new Producto { Id = 4, Nombre = "Champú", Descripcion = "Champú para cabello graso", CategoriaId = 4, Precio = 18000, Stock = 120, IsDeleted = false },
+                new Producto { Id = 5, Nombre = "Exfoliante Corporal", Descripcion = "Exfoliante suave", CategoriaId = 5, Precio = 22000, Stock = 80, IsDeleted = false }
                 );
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario { id = 1, Nombre = "Amanda", Email = "amada@gmail.com", Password = "amanda123", Rol = Service.Enums.RolEnum.Administrador },

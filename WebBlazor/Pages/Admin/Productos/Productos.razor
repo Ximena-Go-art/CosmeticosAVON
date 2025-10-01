@@ -29,7 +29,6 @@ else
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Categoria</th>
                 <th colspan="2">Acciones</th>
             </tr>
         </thead>
@@ -40,7 +39,6 @@ else
                     <td>@producto.Nombre</td>
                     <td>@producto.Precio</td>
                     <td>@producto.Stock</td>
-                    <td>@producto.Categoria</td>
                     <td>
                         <button class="btn btn-danger" @onclick="() => DeleteProducto (producto)">Eliminar</button>
 

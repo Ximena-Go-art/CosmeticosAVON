@@ -1,7 +1,6 @@
-﻿using Service.Enums;
+﻿
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ namespace Service.Models
         public string Nombre { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public int CategoriaId { get; set; }
-        public Categoria? Categoria { get; set; } = null!;
+        public Categoria Categoria { get; set; } = null!;
         public decimal Precio { get; set; }
         public int Stock { get; set; }
         public bool IsDeleted { get; set; } = false;
@@ -22,7 +21,7 @@ namespace Service.Models
 
         public override string ToString()
         {
-            return $"{Nombre}-{Categoria}";
+            return $"{Nombre}";
             
         }
     }

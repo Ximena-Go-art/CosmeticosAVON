@@ -51,6 +51,7 @@ namespace Desktop.Views
             GridProductos.Columns["id"].Visible = false;
             GridProductos.Columns["IsDeleted"].Visible = false;
             GridProductos.Columns["Descripcion"].Visible = false;
+            GridProductos.Columns["CategoriaId"].Visible = false;
 
         }
         private void GridProductos_SelectionChanged_1(object sender, EventArgs e)

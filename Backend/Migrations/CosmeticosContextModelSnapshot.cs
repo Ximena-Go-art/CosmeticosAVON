@@ -52,7 +52,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             IsDeleted = false,
-                            Nombre = "Cuidado de la piel"
+                            Nombre = "Cuidado de la Piel"
                         },
                         new
                         {
@@ -64,13 +64,13 @@ namespace Backend.Migrations
                         {
                             Id = 4,
                             IsDeleted = false,
-                            Nombre = "Cuidado del cabello"
+                            Nombre = "Cuidado del Cabello"
                         },
                         new
                         {
                             Id = 5,
                             IsDeleted = false,
-                            Nombre = "Cuidado corporal"
+                            Nombre = "Cuidado Corporal"
                         });
                 });
 
@@ -275,8 +275,6 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriaId");
-
                     b.ToTable("Productos");
 
                     b.HasData(
@@ -287,48 +285,48 @@ namespace Backend.Migrations
                             Descripcion = "Perfume floral",
                             IsDeleted = false,
                             Nombre = "Perfume",
-                            Precio = 32000m,
-                            Stock = 50
+                            Precio = 50000m,
+                            Stock = 100
                         },
                         new
                         {
                             Id = 2,
                             CategoriaId = 2,
-                            Descripcion = "Crema hidratante",
+                            Descripcion = "Crema para piel seca",
                             IsDeleted = false,
-                            Nombre = "Crema",
-                            Precio = 12000m,
-                            Stock = 30
+                            Nombre = "Crema Hidratante",
+                            Precio = 20000m,
+                            Stock = 150
                         },
                         new
                         {
                             Id = 3,
                             CategoriaId = 3,
-                            Descripcion = "Labial rojo",
+                            Descripcion = "Labial rojo intenso",
                             IsDeleted = false,
                             Nombre = "Labial",
-                            Precio = 18000m,
-                            Stock = 20
+                            Precio = 15000m,
+                            Stock = 200
                         },
                         new
                         {
                             Id = 4,
                             CategoriaId = 4,
-                            Descripcion = "Paleta de sombras",
+                            Descripcion = "Champú para cabello graso",
                             IsDeleted = false,
-                            Nombre = "Sombras",
-                            Precio = 30000m,
-                            Stock = 15
+                            Nombre = "Champú",
+                            Precio = 18000m,
+                            Stock = 120
                         },
                         new
                         {
                             Id = 5,
                             CategoriaId = 5,
-                            Descripcion = "Esmalte de uñas",
+                            Descripcion = "Exfoliante suave",
                             IsDeleted = false,
-                            Nombre = "Esmalte",
+                            Nombre = "Exfoliante Corporal",
                             Precio = 22000m,
-                            Stock = 40
+                            Stock = 80
                         });
                 });
 
@@ -452,7 +450,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6611),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5986),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 150.00m
@@ -461,7 +459,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6619),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5995),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 200.00m
@@ -470,7 +468,7 @@ namespace Backend.Migrations
                         {
                             Id = 3,
                             Estado = 3,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6621),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5998),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 300.00m
@@ -479,7 +477,7 @@ namespace Backend.Migrations
                         {
                             Id = 4,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6626),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6001),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 400.00m
@@ -488,7 +486,7 @@ namespace Backend.Migrations
                         {
                             Id = 5,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6628),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6004),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 500.00m
@@ -580,17 +578,6 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("menu");
-                });
-
-            modelBuilder.Entity("Service.Models.Producto", b =>
-                {
-                    b.HasOne("Service.Models.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
                 });
 #pragma warning restore 612, 618
         }

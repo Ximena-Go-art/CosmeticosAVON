@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class PruebaCategorias : Migration
+    public partial class AgregarRelacionCat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,35 +16,35 @@ namespace Backend.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6611));
+                value: new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5986));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6619));
+                value: new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5995));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6621));
+                value: new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5998));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6626));
+                value: new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6001));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 21, 7, 55, 243, DateTimeKind.Local).AddTicks(6628));
+                value: new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6004));
         }
 
         /// <inheritdoc />
@@ -55,35 +55,35 @@ namespace Backend.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1747));
+                value: new DateTime(2025, 10, 1, 9, 21, 21, 300, DateTimeKind.Local).AddTicks(814));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1755));
+                value: new DateTime(2025, 10, 1, 9, 21, 21, 300, DateTimeKind.Local).AddTicks(827));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1759));
+                value: new DateTime(2025, 10, 1, 9, 21, 21, 300, DateTimeKind.Local).AddTicks(830));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1761));
+                value: new DateTime(2025, 10, 1, 9, 21, 21, 300, DateTimeKind.Local).AddTicks(833));
 
             migrationBuilder.UpdateData(
                 table: "Ventas",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "Fecha",
-                value: new DateTime(2025, 9, 30, 20, 19, 25, 350, DateTimeKind.Local).AddTicks(1764));
+                value: new DateTime(2025, 10, 1, 9, 21, 21, 300, DateTimeKind.Local).AddTicks(836));
         }
     }
 }

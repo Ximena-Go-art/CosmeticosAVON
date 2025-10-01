@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(CosmeticosContext))]
-    [Migration("20250920155824_NuevoInicio")]
-    partial class NuevoInicio
+    [Migration("20251001123316_AgregarRelacionCat")]
+    partial class AgregarRelacionCat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,58 @@ namespace Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("Service.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeleted = false,
+                            Nombre = "Perfumería"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            Nombre = "Cuidado de la Piel"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDeleted = false,
+                            Nombre = "Maquillaje"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsDeleted = false,
+                            Nombre = "Cuidado del Cabello"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsDeleted = false,
+                            Nombre = "Cuidado Corporal"
+                        });
+                });
 
             modelBuilder.Entity("Service.Models.Menu", b =>
                 {
@@ -46,7 +98,51 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Menu");
+                    b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Acceso al módulo de ventas",
+                            IsDeleted = false,
+                            Nombre = "Gestión de Ventas"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Acceso al módulo de productos",
+                            IsDeleted = false,
+                            Nombre = "Gestión de Productos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Acceso a reportes del sistema",
+                            IsDeleted = false,
+                            Nombre = "Reportes"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descripcion = "Historial de compras del cliente",
+                            IsDeleted = false,
+                            Nombre = "Historial"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descripcion = "Gestión de usuarios del sistema",
+                            IsDeleted = false,
+                            Nombre = "Usuarios"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Descripcion = "Detalles de las ventas",
+                            IsDeleted = false,
+                            Nombre = "Detalles de Venta"
+                        });
                 });
 
             modelBuilder.Entity("Service.Models.MenuRol", b =>
@@ -60,17 +156,96 @@ namespace Backend.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("Rol")
+                    b.Property<int>("MenuId")
                         .HasColumnType("int");
 
-                    b.Property<int>("menuId")
+                    b.Property<int>("Rol")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("menuId");
+                    b.HasIndex("MenuId");
 
-                    b.ToTable("MenuRol");
+                    b.ToTable("MenuRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeleted = false,
+                            MenuId = 1,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            MenuId = 2,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDeleted = false,
+                            MenuId = 3,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsDeleted = false,
+                            MenuId = 4,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            IsDeleted = false,
+                            MenuId = 5,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            IsDeleted = false,
+                            MenuId = 6,
+                            Rol = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsDeleted = false,
+                            MenuId = 1,
+                            Rol = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsDeleted = false,
+                            MenuId = 2,
+                            Rol = 2
+                        },
+                        new
+                        {
+                            Id = 13,
+                            IsDeleted = false,
+                            MenuId = 6,
+                            Rol = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            IsDeleted = false,
+                            MenuId = 2,
+                            Rol = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            IsDeleted = false,
+                            MenuId = 4,
+                            Rol = 3
+                        });
                 });
 
             modelBuilder.Entity("Service.Models.Producto", b =>
@@ -81,7 +256,7 @@ namespace Backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Categoria")
+                    b.Property<int>("CategoriaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
@@ -109,62 +284,62 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Categoria = 4,
-                            Descripcion = "Crema para hidratar la piel",
+                            CategoriaId = 1,
+                            Descripcion = "Perfume floral",
                             IsDeleted = false,
-                            Nombre = "Crema Hidratante",
-                            Precio = 32000m,
+                            Nombre = "Perfume",
+                            Precio = 50000m,
                             Stock = 100
                         },
                         new
                         {
                             Id = 2,
-                            Categoria = 1,
-                            Descripcion = "Efecto mate",
+                            CategoriaId = 2,
+                            Descripcion = "Crema para piel seca",
                             IsDeleted = false,
-                            Nombre = "Labial liquido",
-                            Precio = 12000m,
+                            Nombre = "Crema Hidratante",
+                            Precio = 20000m,
                             Stock = 150
                         },
                         new
                         {
                             Id = 3,
-                            Categoria = 2,
-                            Descripcion = "Estilo highlight",
+                            CategoriaId = 3,
+                            Descripcion = "Labial rojo intenso",
                             IsDeleted = false,
-                            Nombre = "Sombras",
-                            Precio = 18.00m,
-                            Stock = 120
+                            Nombre = "Labial",
+                            Precio = 15000m,
+                            Stock = 200
                         },
                         new
                         {
                             Id = 4,
-                            Categoria = 3,
-                            Descripcion = "Efecto cracheado",
+                            CategoriaId = 4,
+                            Descripcion = "Champú para cabello graso",
                             IsDeleted = false,
-                            Nombre = "Esmalte de uñas",
-                            Precio = 30.00m,
-                            Stock = 80
+                            Nombre = "Champú",
+                            Precio = 18000m,
+                            Stock = 120
                         },
                         new
                         {
                             Id = 5,
-                            Categoria = 0,
-                            Descripcion = "De estilo floral",
+                            CategoriaId = 5,
+                            Descripcion = "Exfoliante suave",
                             IsDeleted = false,
-                            Nombre = "Perfume",
-                            Precio = 22.00m,
-                            Stock = 90
+                            Nombre = "Exfoliante Corporal",
+                            Precio = 22000m,
+                            Stock = 80
                         });
                 });
 
             modelBuilder.Entity("Service.Models.Usuario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -184,14 +359,14 @@ namespace Backend.Migrations
                     b.Property<int>("Rol")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Usuarios");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             Email = "amada@gmail.com",
                             IsDeleted = false,
                             Nombre = "Amanda",
@@ -200,7 +375,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            id = 6,
                             Email = "juana@gmail.com",
                             IsDeleted = false,
                             Nombre = "Juana",
@@ -209,7 +384,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             Email = "pedro@gmail.com",
                             IsDeleted = false,
                             Nombre = "Pedro",
@@ -218,7 +393,7 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             Email = "maria@gmail.com",
                             IsDeleted = false,
                             Nombre = "Maria",
@@ -227,21 +402,21 @@ namespace Backend.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            id = 4,
                             Email = "luisa@gmail.com",
                             IsDeleted = false,
                             Nombre = "Luisa",
                             Password = "luisa123",
-                            Rol = 4
+                            Rol = 3
                         },
                         new
                         {
-                            Id = 5,
+                            id = 5,
                             Email = "carlos@gmail.com",
                             IsDeleted = false,
                             Nombre = "Carlos",
                             Password = "carlos123",
-                            Rol = 4
+                            Rol = 3
                         });
                 });
 
@@ -278,7 +453,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7227),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5986),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 150.00m
@@ -287,7 +462,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7238),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5995),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 200.00m
@@ -296,7 +471,7 @@ namespace Backend.Migrations
                         {
                             Id = 3,
                             Estado = 3,
-                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7241),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(5998),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 300.00m
@@ -305,7 +480,7 @@ namespace Backend.Migrations
                         {
                             Id = 4,
                             Estado = 2,
-                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7244),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6001),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 400.00m
@@ -314,7 +489,7 @@ namespace Backend.Migrations
                         {
                             Id = 5,
                             Estado = 1,
-                            Fecha = new DateTime(2025, 9, 20, 12, 58, 22, 506, DateTimeKind.Local).AddTicks(7247),
+                            Fecha = new DateTime(2025, 10, 1, 9, 33, 14, 891, DateTimeKind.Local).AddTicks(6004),
                             IsDeleted = false,
                             Nombre = "",
                             PrecioTotal = 500.00m
@@ -401,7 +576,7 @@ namespace Backend.Migrations
                 {
                     b.HasOne("Service.Models.Menu", "menu")
                         .WithMany()
-                        .HasForeignKey("menuId")
+                        .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
