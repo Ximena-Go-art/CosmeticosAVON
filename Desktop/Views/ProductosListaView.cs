@@ -1,4 +1,4 @@
-﻿using Service.Enums;
+﻿
 using Service.Models;
 using Service.Services;
 using System;
@@ -19,6 +19,11 @@ namespace Desktop.Views
         GenericServices<Producto> _productoService = new GenericServices<Producto>();
         Producto? _currentProducto;
         List<Producto>? _productos;
+
+        GenericServices<Categoria> _categoriaService = new GenericServices<Categoria>();
+        Categoria? _currentCategoria;
+        List<Categoria>? _categoria;
+
         public ProductosListaView()
         {
             InitializeComponent();
@@ -34,24 +39,38 @@ namespace Desktop.Views
             BtnAgregar.Enabled = !CheckVerEliminados.Checked;
             BtnEliminar.Enabled = !CheckVerEliminados.Checked;
         }
-        private async Task GetAllData()
+        private async Task GetAllData() 
         {
             if (CheckVerEliminados.Checked)
             {
-                _productos = await _productoService.GetAllDeletedsAsync("");
+                _productos = await _productoService.GetAllDeletedsAsync("") ?? new List<Producto>();
+                _categoria = await _categoriaService.GetAllDeletedsAsync("")?? new List<Categoria>();
             }
             else
             {
 
-                _productos = await _productoService.GetAllAsync();
-                
-
+                _productos = await _productoService.GetAllAsync()?? new List<Producto>();
+                _categoria = await _categoriaService.GetAllAsync() ?? new List<Categoria>();
             }
-            GridProductos.DataSource = _productos;
-            GridProductos.Columns["id"].Visible = false;
-            GridProductos.Columns["IsDeleted"].Visible = false;
-            GridProductos.Columns["Descripcion"].Visible = false;
-            GridProductos.Columns["CategoriaId"].Visible = false;
+            ActualizarGridView();
+            GridProductos.Columns["Nombre"].Visible = true;
+            GridProductos.Columns["Categoria"].Visible = true;
+            GridProductos.Columns["Precio"].Visible = true;
+            GridProductos.Columns["Stock"].Visible = true;
+
+        }
+        private void ActualizarGridView()
+        {
+            var datosAMostrar = _productos?.Select(p => new
+            {
+                p.Id,
+                p.Nombre,
+                Categoria = p.Categoria?.Nombre,
+                p.Precio,
+                p.Stock
+            }).ToList();
+            GridProductos.DataSource = datosAMostrar;
+
 
         }
         private void GridProductos_SelectionChanged_1(object sender, EventArgs e)
@@ -148,11 +167,14 @@ namespace Desktop.Views
             //checheamos que haya una capacitacion seleccionadas
             if (GridProductos.RowCount > 0 && GridProductos.SelectedRows.Count > 0)
             {
-                _currentProducto = (Producto)GridProductos.SelectedRows[0].DataBoundItem;
-                TxtNombre.Text = _currentProducto.Nombre;
-                CbCategorias.SelectedItem = _currentProducto.Categoria;
-                NumPrecio.Value = _currentProducto.Precio;
-                NumStock.Value = _currentProducto.Stock;
+                if ((Producto)GridProductos.SelectedRows[0].DataBoundItem)
+                {
+                    _currentProducto = _productos.FirstOrDefault(p => p.Id == IdProducto);
+                    TxtNombre.Text = _currentProducto.Nombre;
+                    CbCategorias.SelectedItem = _currentCategoria.Nombre;
+                    NumPrecio.Value = _currentProducto.Precio;
+                    NumStock.Value = _currentProducto.Stock;
+                }
                 // selecciona el rol actual del usuario
 
                 TabControl.SelectedTab = AgregarEditarUsuarios;
