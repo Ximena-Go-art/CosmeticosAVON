@@ -164,7 +164,7 @@ namespace Desktop.Views
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            //checheamos que haya una capacitacion seleccionadas
+            //checheamos que haya productos seleccionados
             if (GridProductos.RowCount > 0 && GridProductos.SelectedRows.Count > 0)
             {
                 if ((Producto)GridProductos.SelectedRows[0].DataBoundItem)
